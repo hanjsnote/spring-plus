@@ -4,7 +4,6 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.AllArgsConstructor;
 import org.example.expert.domain.search.dto.response.TodoSearchResponse;
-import org.example.expert.domain.todo.entity.QTodo;
 import org.example.expert.domain.todo.entity.Todo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import static org.example.expert.domain.todo.entity.QTodo.todo;
@@ -51,12 +49,13 @@ public class TodoRepositoryImpl implements TodoCustomRepository{
                 .leftJoin(todo.managers, manager)
                 .leftJoin(todo.comments, comment)
                 .where(todo.title.contains(title))
-                .groupBy(todo.id, todo.title)
+                .groupBy(todo.id)                   // todo 별로 집계 (count)를 계산하기 위해 필요
                 .orderBy(todo.createdAt.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
+                .offset(pageable.getOffset())       //페이징 시작 위치
+                .limit(pageable.getPageSize())      //페이징 사이즈
+                .fetch();                           //실제 DB실행 결과를 DTO 리스트로 반환
 
+        // 전체 개수 조회
         Long total = jpaQueryFactory
                 .select(todo.countDistinct())
                 .from(todo)
@@ -90,8 +89,6 @@ public class TodoRepositoryImpl implements TodoCustomRepository{
         Long total = jpaQueryFactory
                 .select(todo.countDistinct())
                 .from(todo)
-                .leftJoin(todo.managers, manager)
-                .leftJoin(manager.user, user)
                 .where(user.nickname.contains(nickname))
                 .fetchOne();
 
