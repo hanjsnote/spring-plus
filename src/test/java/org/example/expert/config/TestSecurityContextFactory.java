@@ -15,7 +15,7 @@ public class TestSecurityContextFactory implements WithSecurityContextFactory<Wi
         SecurityContext context = SecurityContextHolder.createEmptyContext();
 
         AuthUser authUser = new AuthUser(customUser.userId(), customUser.email(), customUser.role(), customUser.nickname());
-        JwtAuthenticationToken authentication = new JwtAuthenticationToken(authUser, null);
+        JwtAuthenticationToken authentication = new JwtAuthenticationToken(authUser, authUser.getAuthorities());
 
         context.setAuthentication(authentication);
         return context;

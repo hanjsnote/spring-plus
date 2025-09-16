@@ -8,9 +8,9 @@ import java.util.Collection;
 
 public class JwtAuthenticationToken extends AbstractAuthenticationToken {
 
-    private final AuthUser authUser;
+    private final AuthUser authUser;    //JWT안에 들어있는 사용자 정보(id, email, role, nickname)를 담은 도메인 객체
 
-    //인증된 JWT 토큰을 생성하는 생성자
+    //인증된 JWT 토큰을 생성하는 생성자, 권한과 인증 상태 세팅
     public JwtAuthenticationToken(AuthUser authUser, Collection<? extends GrantedAuthority> authorities){
         super(authorities);
         this.authUser = authUser;
@@ -26,11 +26,9 @@ public class JwtAuthenticationToken extends AbstractAuthenticationToken {
     //Principal(인증된 사용자)을 반환. (애플리케이션 전체에서 현재 사용자의 정보에 접근하는데 사용
     @Override
     public Object getPrincipal() {
-        return null;
+        return authUser;
     }
-
-
-    }
+}
 
 
 

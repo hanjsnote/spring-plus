@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse httpResponse,
             @NonNull FilterChain chain
     ) throws ServletException, IOException {
-        //HTTP 요청 헤더에서 "Authorization" 헤더값을 가져옴
+        //HTTP 요청 헤더에서 Authorization: Bearer <token>값을 꺼냄 로그인 없는 공개 요청도 허용할 수 있게 함
         String authorizationHeader = httpRequest.getHeader("Authorization");
 
         log.info("JwtAuthenticationFilter - request URI: {}", httpRequest.getRequestURI());
@@ -52,7 +52,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String jwt = jwtUtil.substringToken(authorizationHeader);
 
-        //JWT 검증 및 인증 설정
+        //JWT 검증 및 인증 설정 실패하면 에러 응답(JSON), 성공하면 processAuthentication에서 Claims 추출 후 SecurityContext에 사용자 정보 세팅
         if (!processAuthentication(jwt, httpRequest, httpResponse)) {
             return;
         }

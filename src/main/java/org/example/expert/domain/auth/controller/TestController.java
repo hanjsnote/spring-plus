@@ -17,7 +17,7 @@ public class TestController {
     public void test(@AuthenticationPrincipal AuthUser authUser){
         log.info("User ID: {}", authUser.getId());
         log.info("Email: {}", authUser.getEmail());
-        log.info("UserRole: {}", authUser.getUserRole());
+        log.info("UserRole: {}", authUser.getAuthorities());
         log.info("nickname{}", authUser.getNickname());
     }
 
