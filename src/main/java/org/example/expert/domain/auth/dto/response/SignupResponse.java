@@ -6,8 +6,10 @@ import lombok.Getter;
 public class SignupResponse {
 
     private final String bearerToken;
+    private final Long userId;
 
-    public SignupResponse(String bearerToken) {
+    public SignupResponse(String bearerToken, Long userId) {
         this.bearerToken = bearerToken;
+        this.userId = userId;
     }
 }

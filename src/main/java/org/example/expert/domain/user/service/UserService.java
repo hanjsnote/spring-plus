@@ -49,4 +49,12 @@ public class UserService {
             throw new InvalidRequestException("새 비밀번호는 8자 이상이어야 하고, 숫자와 대문자를 포함해야 합니다.");
         }
     }
+
+    @Transactional(readOnly = true)
+    public User getUserById(Long userId) {
+
+        return userRepository.findById(userId).orElseThrow(
+                () -> new IllegalArgumentException("해당 유저를 찾을 수 없습니다.")
+        );
+    }
 }

@@ -9,10 +9,12 @@ public class CommentSaveResponse {
     private final Long id;
     private final String contents;
     private final UserResponse user;
+    private final Long todoId;
 
-    public CommentSaveResponse(Long id, String contents, UserResponse user) {
+    public CommentSaveResponse(Long id, String contents, UserResponse user, Long todoId) {
         this.id = id;
         this.contents = contents;
         this.user = user;
+        this.todoId = todoId;
     }
 }
