@@ -7,6 +7,7 @@ import org.example.expert.domain.log.enums.LogType;
 import org.example.expert.domain.log.service.LogService;
 import org.example.expert.domain.user.entity.User;
 import org.example.expert.domain.user.service.UserService;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,8 @@ public class LoggingCommon {
         return userService.getUserById(authUser.getId());
     }
     //필요한 데이터만 뽑아서 로그 생성
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Async
+    @Transactional
     public void createAndSaveLog(LogType logType, User user, Long todoId, Long commentId, String description){
         Log log = Log.of(
                 logType,
