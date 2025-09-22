@@ -9,18 +9,21 @@ public class UserResponse {
     private final Long id;
     private final String email;
     private final String nickname;
+    private final String profileImageUrl;
 
-    public UserResponse(Long id, String email, String nickname) {
+    public UserResponse(Long id, String email, String nickname, String profileImageUrl) {
         this.id = id;
         this.email = email;
         this.nickname = nickname;
+        this.profileImageUrl = profileImageUrl;
     }
 
     public static UserResponse from(User user) {
         return new UserResponse(
                 user.getId(),
                 user.getEmail(),
-                user.getNickname()
+                user.getNickname(),
+                user.getProfileImageUrl()
         );
     }
 }
