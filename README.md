@@ -1,4 +1,4 @@
-<img width="1648" height="413" alt="image" src="https://github.com/user-attachments/assets/49a513e0-b9d8-4acb-8627-9f4d214e2a04" /># SPRING PLUS
+# SPRING PLUS
 
 # 설정 화면
 **ec2 인스턴스**
