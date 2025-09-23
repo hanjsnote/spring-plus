@@ -1,4 +1,11 @@
 # SPRING PLUS
+## 날짜별 개발
+2025.09.12 : 코드 개선, User 엔티티에 nickname 필드 추가, weather, modifiedAt 조건을 입력할 수 있는 @RequestParam 추가, 테스트코드 수정
+2025.09.15 : JPQL -> QuseryDSL로 수정, Spring Security
+2025.09.16 : QueryDSL을 이용한 Search API
+2025.09.17 : Log API
+2025.09.22 : AWS 배포
+
 
 # 설정 화면
 
@@ -23,7 +30,7 @@
 ## S3 속성
 <img width="1654" height="771" alt="image" src="https://github.com/user-attachments/assets/b212eb8a-5cfb-443c-a04d-c53041dc71dc" />
 
-## S3 권한**
+## S3 권한
 <img width="3420" height="5096" alt="image" src="https://github.com/user-attachments/assets/0859c4fd-c5b4-4a2b-9891-646c1a567334" />
 
 ## health check API
