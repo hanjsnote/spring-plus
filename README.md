@@ -1,10 +1,10 @@
 # SPRING PLUS
 ## 날짜별 개발
-2025.09.12 : 코드 개선, User 엔티티에 nickname 필드 추가, weather, modifiedAt 조건을 입력할 수 있는 @RequestParam 추가, 테스트코드 수정 /n
-2025.09.15 : JPQL -> QuseryDSL로 수정, Spring Security /n
-2025.09.16 : QueryDSL을 이용한 Search API
-2025.09.17 : Log API
-2025.09.22 : AWS 배포
+- 2025.09.12 : 코드 개선, User 엔티티에 nickname 필드 추가, weather, modifiedAt 조건을 입력할 수 있는 @RequestParam 추가, 테스트코드 수정
+- 2025.09.15 : JPQL -> QuseryDSL로 수정, Spring Security
+- 2025.09.16 : QueryDSL을 이용한 Search API
+- 2025.09.17 : Log API
+- 2025.09.22 : AWS 배포
 
 
 # 설정 화면
