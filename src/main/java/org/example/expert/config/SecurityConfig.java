@@ -52,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers(request -> request.getRequestURI().startsWith("/auth")).permitAll()
 //                        .requestMatchers("/test").hasAuthority(UserRole.Authority.ADMIN)    // /test는 ADMIN만 허용
                         .requestMatchers("/open").permitAll()       // /open은 아무나 접근 가능
+                        .requestMatchers("/health").permitAll()     // health는 아무나 접근 가능
                         .anyRequest().authenticated() //SecurityContext에 AbstractAuthenticationToken이 set이 되어있다면 통과
                 )
                 .build();
